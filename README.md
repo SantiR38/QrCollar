@@ -70,3 +70,20 @@ Next, you have to **create a superuser**:
   2. Remove postgres volume: `source bash/remove_postgres.sh`.
   3. Create migrations: `source bash/django/makemigrations.sh` and `source bash/django/migrate.sh`.
   4. Run again the compose: `$ source bash/up.sh`.
+
+## Qr handling
+
+This is the base script that you can use to generate a Qr code.
+
+```python
+import qrcode, os
+
+img = qrcode.make('test text')
+
+print(type(img))
+print(img.size)
+# <class 'qrcode.image.pil.PilImage'>
+# (290, 290)
+
+img.save("path/qr.png")
+```
